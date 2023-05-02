@@ -7,22 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-
-
     "test": "mocha --experimental-modules --es-module-specifier-resolution=node --require ts-node/register test/**/*.test.ts"
-
   },
-
-  
-
-      
-  
   "dependencies": {
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
     "@types/node": "18.16.2",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
+    "@types/styled-components": "^5.1.26",
     "axios": "^1.4.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
