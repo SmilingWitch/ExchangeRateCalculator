@@ -18,7 +18,7 @@ export const Card = styled.div`
     -moz-box-shadow: 10px 10px 26px -8px rgba(41,40,40,1);
     box-shadow: 10px 10px 26px -8px rgba(41,40,40,1);
 
-`
+`;
 
 export const Body = styled.div`
   position: relative;
@@ -29,12 +29,12 @@ export const Body = styled.div`
   height: 80%; 
   background: rgba(0,0,0,0.2);
   border-radius: 10px;
-`
+`;
 export const Header = styled.div`
   position: relative; 
   width: 100%;
   font-size: 1em ;
-`
+`;
 
 export const Input = styled.input`
     position: relative;

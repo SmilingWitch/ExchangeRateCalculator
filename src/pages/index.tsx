@@ -2,7 +2,6 @@ import { Inter } from 'next/font/google'
 import React, { useState, useEffect } from 'react';
 import { Card, Body, Header, Input, Select, Button, Amount, Rate, Option } from "../styles/ExchangeRateCalculatorStyles";
 import styles from "../styles/styles.module.css"
-import {FaArrowAltCircleDown} from "react-icons/fa";
 
 const inter = Inter({ subsets: ['latin'] })
 const urlApi : string  = "https://api.apilayer.com/exchangerates_data" ;
