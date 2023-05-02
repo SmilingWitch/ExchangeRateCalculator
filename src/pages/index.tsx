@@ -88,11 +88,11 @@ export default function Home() {
                   ))
                 }
               </Select>
-            <Amount> {convertedAmount}</Amount> 
+            <Amount> {convertedAmount.toFixed(2)}</Amount> 
             </Body>            
           </Card>
 
-          <Rate>Exchange Rate: {exchangeRate}</Rate>
+          <Rate>Exchange Rate: {exchangeRate.toFixed(2)}</Rate>
           <Button  onClick = {() => Convert()}>Convert</Button>
         </div>
 
