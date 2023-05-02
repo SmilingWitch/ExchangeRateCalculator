@@ -23,8 +23,10 @@ export default function Home() {
   }
 
   var myHeaders = new Headers();
-  const API_KEY = process.env.API_KEY ? process.env.API_KEY : ""
+  /*let API_KEY = process.env.API_KEY ? process.env.API_KEY : ""*/
+  const API_KEY = process.env.API_KEY;
   myHeaders.append("apikey", API_KEY );
+  console.log(API_KEY)
 
   const requestOptions: RequestInit = {
     method: 'GET',
@@ -40,16 +42,15 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log("useEffect called")
+    
     async function CurrencesList() {
       let res = await fetch(`${urlApi}/symbols`, requestOptions )
       const data = await res.json();
-      SetCurrencies(data.symbols)      
-    }
-    CurrencesList();
+      console.log(data)
+      SetCurrencies(data.symbols) 
 
-      //eslint-disable-next-line react-hooks/exhaustive-deps
-    
+    }
+    CurrencesList();  
   }, []);
 
 
