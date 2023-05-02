@@ -47,6 +47,9 @@ export default function Home() {
       SetCurrencies(data.symbols)      
     }
     CurrencesList();
+
+      //eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
 
 
