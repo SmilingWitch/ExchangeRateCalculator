@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Card, Body, Header, Input, Select, Button, Amount, Rate, Option } from "../styles/ExchangeRateCalculatorStyles";
 import styles from "../styles/styles.module.css"
 
@@ -18,21 +18,32 @@ export default function Home() {
     "AFN": "Afghan Afghani", 
   })
 
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(parseInt(e.target.value));   
   }
 
   var myHeaders = new Headers();
-  /*let API_KEY = process.env.API_KEY ? process.env.API_KEY : ""*/
+  
   const API_KEY = process.env.API_KEY;
-  myHeaders.append("apikey", API_KEY );
-  console.log(API_KEY)
+  /*myHeaders.append("apikey", API_KEY );
 
-  const requestOptions: RequestInit = {
+  const requestOptions: RequestInit = { 
     method: 'GET',
     headers: myHeaders,
     redirect: undefined,
-  };
+  };*/
+
+  const requestOptions = useMemo(() => {
+    const myHeaders = new Headers();
+    myHeaders.append('apikey', API_KEY);
+    return {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: undefined,
+    };
+  }, [API_KEY]);
+
 
   async function Convert() {
     let res = await fetch(`${urlApi}/convert?to=${toCurrency}&from=${fromCurrency}&amount=${amount}`, requestOptions )
@@ -42,7 +53,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    
+
     async function CurrencesList() {
       let res = await fetch(`${urlApi}/symbols`, requestOptions )
       const data = await res.json();
@@ -51,7 +62,7 @@ export default function Home() {
 
     }
     CurrencesList();  
-  }, []);
+  }, [[requestOptions]]);
 
 
 
@@ -88,11 +99,11 @@ export default function Home() {
                   ))
                 }
               </Select>
-            <Amount> {convertedAmount.toFixed(2)}</Amount> 
+            <Amount> {convertedAmount}</Amount> 
             </Body>            
           </Card>
 
-          <Rate>Exchange Rate: {exchangeRate.toFixed(2)}</Rate>
+          <Rate>Exchange Rate: {exchangeRate}</Rate>
           <Button  onClick = {() => Convert()}>Convert</Button>
         </div>
 
