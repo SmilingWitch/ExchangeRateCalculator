@@ -23,8 +23,7 @@ export default function Home() {
   }
 
   var myHeaders = new Headers();
-  /*let API_KEY = process.env.API_KEY ? process.env.API_KEY : ""*/
-  const API_KEY = process.env.API_KEY;
+  let API_KEY = process.env.API_KEY ? process.env.API_KEY : ""
   myHeaders.append("apikey", API_KEY );
   console.log(API_KEY)
 
